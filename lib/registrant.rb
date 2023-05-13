@@ -5,7 +5,11 @@ class Registrant
     @name = name
     @age = age
     @permit = permit
-    @license_data = {:license=>false, :renewed=>false, :written=>false}
+    @license_data = {
+                     license: false,
+                     renewed: false, 
+                     written: false
+                    }
   end
 
   def permit?
