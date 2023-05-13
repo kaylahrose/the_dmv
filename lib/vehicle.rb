@@ -41,4 +41,14 @@ class Vehicle
       @plate_type = :antique
     end
   end
+
+  def rate
+    if plate_type == :ev
+      200
+    elsif plate_type == :regular
+      100
+    else plate_type == :antique
+      25
+    end
+  end
 end
