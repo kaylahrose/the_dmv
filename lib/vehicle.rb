@@ -24,4 +24,8 @@ class Vehicle
   def electric_vehicle?
     @engine == :ev
   end
+
+  def register
+    @registration_date = Date.today
+  end
 end
