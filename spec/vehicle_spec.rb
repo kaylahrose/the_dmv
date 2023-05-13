@@ -15,6 +15,7 @@ RSpec.describe Vehicle do
       expect(@cruz.model).to eq('Cruz')
       expect(@cruz.engine).to eq(:ice)
       expect(@cruz.registration_date).to eq(nil)
+      expect(@cruz.plate_type).to eq(nil)
     end
   end
 
@@ -35,11 +36,26 @@ RSpec.describe Vehicle do
   end
 
   describe 'instance variables' do
-    it '#register' do
-      expect(@cruz.registration_date).to eq(nil)
-      @cruz.register
-
-      expect(@cruz.registration_date).to be_a Date
+    describe '#register' do
+      it "updates registrations date" do
+        expect(@cruz.registration_date).to eq(nil)
+        @cruz.register
+        
+        expect(@cruz.registration_date).to be_a Date
+      end
+      
+      it 'updates plates' do
+        expect(@cruz.plate_type).to eq(nil)
+        expect(@bolt.plate_type).to eq(nil)
+        expect(@camaro.plate_type).to eq(nil)
+        @cruz.register
+        @bolt.register
+        @camaro.register
+        
+        expect(@cruz.plate_type).to eq(:regular)
+        expect(@bolt.plate_type).to eq(:ev)
+        expect(@camaro.plate_type).to eq(:antique)
+      end   
     end
   end
 end
