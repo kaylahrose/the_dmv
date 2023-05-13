@@ -29,6 +29,10 @@ class Vehicle
   
   def register
     @registration_date = Date.today
+    update_plate
+  end
+
+  def update_plate
     if engine == :ev
       @plate_type = :ev
     elsif Date.new(year + 25) > Date.today
