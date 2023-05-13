@@ -57,5 +57,16 @@ RSpec.describe Vehicle do
         expect(@camaro.plate_type).to eq(:antique)
       end   
     end
+
+    it '#rate returns registration price for plate type' do
+      @cruz.update_plate
+      @bolt.update_plate
+      @camaro.update_plate
+
+      expect(@cruz.rate).to eq(100)
+      expect(@bolt.rate).to eq(200)
+      expect(@camaro.rate).to eq(25)
+    end 
   end
 end
+
