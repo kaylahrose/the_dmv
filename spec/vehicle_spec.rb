@@ -44,13 +44,13 @@ RSpec.describe Vehicle do
         expect(@cruz.registration_date).to be_a Date
       end
       
-      it 'updates plates' do
+      it '#update_plate' do
         expect(@cruz.plate_type).to eq(nil)
         expect(@bolt.plate_type).to eq(nil)
         expect(@camaro.plate_type).to eq(nil)
-        @cruz.register
-        @bolt.register
-        @camaro.register
+        @cruz.update_plate
+        @bolt.update_plate
+        @camaro.update_plate
         
         expect(@cruz.plate_type).to eq(:regular)
         expect(@bolt.plate_type).to eq(:ev)
