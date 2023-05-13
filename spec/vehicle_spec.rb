@@ -33,4 +33,13 @@ RSpec.describe Vehicle do
       expect(@camaro.electric_vehicle?).to eq(false)
     end
   end
+
+  describe 'instance variables' do
+    it '#register' do
+      expect(@cruz.registration_date).to eq(nil)
+      @cruz.register
+
+      expect(@cruz.registration_date).to be_a Date
+    end
+  end
 end
