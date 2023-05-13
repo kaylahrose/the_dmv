@@ -21,4 +21,8 @@ class Facility
 
   # TODO: service checker helper method or module that creates
   # reg vehicles attribute?
+
+  def register_vehicle(vehicle)
+    vehicle.register
+  end
 end
