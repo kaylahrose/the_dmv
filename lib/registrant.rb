@@ -7,4 +7,8 @@ class Registrant
     @permit = permit
     @license_data = {}
   end
+
+  def permit?
+    permit
+  end
 end

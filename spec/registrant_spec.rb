@@ -15,12 +15,19 @@ RSpec.describe Registrant do
     expect(registrant_2.permit?).to eq(true)
     expect(registrant_2.license_data).to eq({:written=>false, :license=>false, :renewed=>false})
   end
-  
-  it '#ear_permit' do
-    expect(registrant_1.permit).to eq(false)
-    
-    registrant_1.earn_permit
-    
-    expect(registrant_1.permit).to eq(true)
+
+  describe 'instance methods' do
+    it '#ear_permit' do
+      expect(registrant_1.permit).to eq(false)
+      
+      registrant_1.earn_permit
+      
+      expect(registrant_1.permit).to eq(true)
+    end
+
+    it '#permit?' do
+      expect(registrant_1.permit?).to eq(false)
+      expect(registrant_2.permit?).to eq(true)
+    end
   end
 end
