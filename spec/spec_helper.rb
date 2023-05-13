@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 require './lib/dmv'
 require './lib/facility'
 require './lib/vehicle'
