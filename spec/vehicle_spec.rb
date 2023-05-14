@@ -15,6 +15,7 @@ RSpec.describe Vehicle do
       expect(@cruz.model).to eq('Cruz')
       expect(@cruz.engine).to eq(:ice)
       expect(@cruz.registration_date).to eq(nil)
+      expect(@cruz.plate_type).to eq(nil)
     end
   end
 
@@ -33,4 +34,39 @@ RSpec.describe Vehicle do
       expect(@camaro.electric_vehicle?).to eq(false)
     end
   end
+
+  describe 'instance variables' do
+    describe '#register' do
+      it "updates registrations date" do
+        expect(@cruz.registration_date).to eq(nil)
+        @cruz.register
+        
+        expect(@cruz.registration_date).to be_a Date
+      end
+      
+      it '#update_plate' do
+        expect(@cruz.plate_type).to eq(nil)
+        expect(@bolt.plate_type).to eq(nil)
+        expect(@camaro.plate_type).to eq(nil)
+        @cruz.update_plate
+        @bolt.update_plate
+        @camaro.update_plate
+        
+        expect(@cruz.plate_type).to eq(:regular)
+        expect(@bolt.plate_type).to eq(:ev)
+        expect(@camaro.plate_type).to eq(:antique)
+      end   
+    end
+
+    it '#rate returns registration price for plate type' do
+      @cruz.update_plate
+      @bolt.update_plate
+      @camaro.update_plate
+
+      expect(@cruz.rate).to eq(100)
+      expect(@bolt.rate).to eq(200)
+      expect(@camaro.rate).to eq(25)
+    end 
+  end
 end
+
