@@ -19,11 +19,10 @@ class Facility
     @services << service
   end
 
-  # TODO: service checker helper method or module that creates
-  # reg vehicles attribute?
-
   def register_vehicle(vehicle)
+    exit unless @services.include?("Vehicle Registration")
     vehicle.register
     @registered_vehicles << vehicle
+    @collected_fees += vehicle.rate
   end
 end

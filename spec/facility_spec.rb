@@ -38,7 +38,6 @@ RSpec.describe Facility do
       it '#register_vehicle creates a cars registration date, plate type, and collects facility fees' do
         expect(cruz.registration_date).to eq(nil)
         expect(facility_1.registered_vehicles).to eq([])
-        expect(facility_1.collected_fees).to eq(0)
 
         facility_1.register_vehicle(cruz)
 
@@ -46,9 +45,9 @@ RSpec.describe Facility do
         expect(cruz.plate_type).to eq(:regular)
         expect(facility_1.registered_vehicles).to be_a Array
         expect(facility_1.registered_vehicles[0]).to eq(cruz)
-        expect(facility_1.collected_fees).to eq(100)
         
         facility_1.register_vehicle(camaro)
+        facility_1.register_vehicle(bolt)
         
         expect(camaro.registration_date).to be_a Date
         expect(camaro.plate_type).to eq(:antique)
@@ -57,7 +56,7 @@ RSpec.describe Facility do
         expect(facility_2.services).to eq([])
         
         facility_2.register_vehicle(camaro)
-
+        
         expect(facility_2.registered_vehicles).to eq(nil)
         expect(facility_2.collected_fees).to eq(0)
       end

@@ -33,22 +33,22 @@ class Vehicle
   end
 
   def update_plate
-    if engine == :ev
+    if electric_vehicle?
       @plate_type = :ev
-    elsif Date.new(year + 25) > Date.today
-      @plate_type = :regular
-    else
+    elsif antique?
       @plate_type = :antique
+    else
+      @plate_type = :regular
     end
   end
 
   def rate
-    if plate_type == :ev
-      200
-    elsif plate_type == :regular
-      100
-    else plate_type == :antique
+    if antique?
       25
+    elsif electric_vehicle?
+      200
+    else
+      100
     end
   end
 end
